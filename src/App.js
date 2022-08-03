@@ -11,30 +11,30 @@ import NewWhip from "./components/NewWhip";
 
 function App() {
   useEffect(() => {
-    fetch("http://localhost:3000/garage")
+    fetch("http://localhost:4000/garages")
       .then((res) => res.json())
-      .then((data) => setGarage(data));
+      .then((data) => setGarages(data));
   }, []);
-
-  const [garage, setGarage] = useState({
+  
+  const [garages, setGarages] = useState({
     img: null,
-    whips: [whips],
+    whips: [],
   });
+
 
   const [whips, setWhips] = useState([]);
 
   const [user, setUser] = useState();
-  console.log(garage);
-
+console.log(user)
   const addToWhips = (whip) => {
     setWhips([...whips, whip]).then(() => {
-      setGarage();
+      setGarages();
     });
   };
 
   const updateGarageState = (id) => {
     setWhips(whips.filter((whip) => whip._id !== id)).then(() => {
-      setGarage();
+      setGarages();
     });
   };
 
@@ -48,7 +48,7 @@ function App() {
           path="Garage"
           element={
             <GaragePage
-              garrage={garage}
+              garage={garages}
               updateGarageState={updateGarageState}
               user={user}
             />

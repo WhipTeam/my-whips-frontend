@@ -10,6 +10,7 @@ const LoginPage = () => {
         <br />
         <label>Password:</label>
         <input type='text' name='password' /><br></br>
+        <button><a href="./garage">Login</a></button>
       </form>
     </div>
   )
