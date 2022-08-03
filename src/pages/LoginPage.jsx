@@ -29,7 +29,7 @@ const LoginPage = ({ setUser }) => {
     <div>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="name">Username:</label>
         <input type="text" name="username" id="name" onChange={handleChange} />
         <br />
         <label htmlFor="password">Password:</label>
