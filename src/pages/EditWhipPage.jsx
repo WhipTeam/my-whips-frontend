@@ -8,7 +8,7 @@ const StyledForm = styled.form`
   flex-direction: column;
 `
 
-const WhipEdit = ({ setWhips }) => {
+const EditWhipPage = ({ setWhips }) => {
   let { id } = useParams() //Used in the handleSubmit function
   let navigate = useNavigate()
 

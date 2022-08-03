@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from 'react-router-dom'
 
-const WhipDetails = ({ whips }) => {
+const DetailsPage = ({ whips }) => {
   const { id } = useParams()
   const [ whip, setWhip ] = useState() //Whip is singular here, following the CoffeeShop example, he uses [coffees] in the App.js and [coffee] here
 
