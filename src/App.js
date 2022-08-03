@@ -45,6 +45,8 @@ function App() {
     setUser({});
   };
 
+  const handleLogin = () => {};
+
   if (!user)
     return (
       <div>
@@ -56,7 +58,7 @@ function App() {
     <div className="App">
       <NavBar handleLogout={handleLogout} />
       <Routes>
-        <Route path="login" element={<LoginPage setUser={setUser} />} />
+        <Route path="login" element={<LoginPage handleLogin={handleLogin} />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="Garage" element={<GaragePage />} />
         <Route path="Garage/new-whip" element={<NewWhip />} />
