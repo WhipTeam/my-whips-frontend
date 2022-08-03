@@ -41,6 +41,10 @@ function App() {
     });
   };
 
+  const handleLogout = () => {
+    setUser({});
+  };
+
   if (!user)
     return (
       <div>
@@ -50,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar handleLogout={handleLogout} />
       <Routes>
         <Route path="login" element={<LoginPage setUser={setUser} />} />
         <Route path="signup" element={<SignUpPage />} />
