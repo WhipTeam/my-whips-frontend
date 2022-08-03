@@ -45,6 +45,8 @@ function App() {
     setUser({});
   };
 
+  const handleLogin = () => {};
+
   if (!user)
     return (
       <div>
