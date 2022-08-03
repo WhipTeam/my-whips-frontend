@@ -15,13 +15,10 @@ function App() {
     axios
       .get(`http://localhost:4000/garage?owner=${user.id}`)
       // .then((res) => res.json())
-      .then(({ data }) => setGarages(data));
+      .then(({ data }) => setGarage(data));
   }, []);
 
-  const [garages, setGarages] = useState({
-    img: null,
-    whips: [],
-  });
+  const [garage, setGarage] = useState({});
 
   const [whips, setWhips] = useState([]);
 
@@ -31,18 +28,19 @@ function App() {
 
   const addToWhips = (whip) => {
     setWhips([...whips, whip]).then(() => {
-      setGarages();
+      setGarage();
     });
   };
 
-  const updateGaragesState = (id) => {
+  const updateGarageState = (id) => {
     setWhips(whips.filter((whip) => whip._id !== id)).then(() => {
-      setGarages();
+      setGarage();
     });
   };
 
   const handleLogout = () => {
     setUser({});
+    setGarage({});
   };
 
   const handleLogin = () => {};
