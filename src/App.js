@@ -8,35 +8,45 @@ import GaragePage from "./pages/GaragePage";
 import GaragesPage from "./pages/GaragesPage";
 import NavBar from "./components/NavBar";
 import NewWhip from "./components/NewWhip";
+import axios from "axios";
 
 function App() {
   useEffect(() => {
-    fetch("http://localhost:3000/garage")
-      .then((res) => res.json())
-      .then((data) => setGarage(data));
+    axios
+      .get(`http://localhost:4000/garage?owner=${user.id}`)
+      // .then((res) => res.json())
+      .then(({ data }) => setGarages(data));
   }, []);
 
-  const [garage, setGarage] = useState({
+  const [garages, setGarages] = useState({
     img: null,
-    whips: [whips],
+    whips: [],
   });
 
   const [whips, setWhips] = useState([]);
 
-  const [user, setUser] = useState();
-  console.log(garage);
+  const [user, setUser] = useState({ id: "62e563d14b2c4b9570ad9683" });
+  // console.log(garages);
+  console.log(user);
 
   const addToWhips = (whip) => {
     setWhips([...whips, whip]).then(() => {
-      setGarage();
+      setGarages();
     });
   };
 
-  const updateGarageState = (id) => {
+  const updateGaragesState = (id) => {
     setWhips(whips.filter((whip) => whip._id !== id)).then(() => {
-      setGarage();
+      setGarages();
     });
   };
+
+  if (!user)
+    return (
+      <div>
+        <LoginPage />
+      </div>
+    );
 
   return (
     <div className="App">
@@ -44,20 +54,8 @@ function App() {
       <Routes>
         <Route path="login" element={<LoginPage setUser={setUser} />} />
         <Route path="signup" element={<SignUpPage />} />
-        <Route
-          path="Garage"
-          element={
-            <GaragePage
-              garrage={garage}
-              updateGarageState={updateGarageState}
-              user={user}
-            />
-          }
-        />
-        <Route
-          path="Garage/new-whip"
-          element={<NewWhip addWhip={addToWhips} />}
-        />
+        <Route path="Garage" element={<GaragePage />} />
+        <Route path="Garage/new-whip" element={<NewWhip />} />
         <Route path="Garages" element={<GaragesPage />} />
         <Route path="*" element={<Navigate to="/Garage" replace />} />
       </Routes>
