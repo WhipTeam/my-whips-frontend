@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar handleLogout={handleLogout} />
+      <NavBar handleLogout={handleLogout} user={user} />
       <Routes>
         <Route
           path="login"

@@ -12,7 +12,11 @@ const GaragePage = ({ user, setGarage }) => {
         .then(({ data }) => setGarage(data));
   }, []);
 
-  return <div>{user ? <h1>{user.name}'s Whips</h1> : <h1>my whips</h1>}</div>;
+  return (
+    <div>
+      <h1>{user.name}'s Whips</h1>
+    </div>
+  );
 };
 
 export default GaragePage;
