@@ -8,6 +8,7 @@ import GaragePage from "./pages/GaragePage";
 import GaragesPage from "./pages/GaragesPage";
 import NavBar from "./components/NavBar";
 import NewWhip from "./components/NewWhip";
+import NewWhipPage from "./pages/NewWhipPage";
 import axios from "axios";
 
 function App() {
@@ -46,17 +47,17 @@ function App() {
       <NavBar handleLogout={handleLogout} user={user} />
       <Routes>
         <Route
-          path="login"
+          path="/login"
           element={<LoginPage setUser={setUser} setGarage={setGarage} />}
         />
-        <Route path="signup" element={<SignUpPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route
           path="/garage"
           element={<GaragePage user={user} setGarage={setGarage} />}
         />
-        <Route path="Garage/new-whip" element={<NewWhip />} />
+        <Route path="/garage/new-whip" element={<NewWhipPage />} />
         <Route
-          path="garages"
+          path="/garages"
           element={<GaragesPage garages={garages} setGarages={setGarages} />}
         />
         <Route path="*" element={<Navigate to="/garage" replace />} />

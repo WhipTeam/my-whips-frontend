@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import Whip from "../components/Whip";
+import { Link } from "react-router-dom";
 
 const GaragePage = ({ user, setGarage }) => {
   console.log(user);
@@ -15,6 +16,9 @@ const GaragePage = ({ user, setGarage }) => {
   return (
     <div>
       <h1>{user.name}'s Whips</h1>
+      <button>
+        <Link to="/garage/new-whip">New Whip</Link>
+      </button>
     </div>
   );
 };
