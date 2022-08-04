@@ -11,39 +11,28 @@ import NewWhip from "./components/NewWhip";
 import axios from "axios";
 
 function App() {
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/garage?owner=${user.id}`)
-      // .then((res) => res.json())
-      .then(({ data }) => setGarage(data));
-  }, []);
-
   const [garage, setGarage] = useState({});
 
-  const [whips, setWhips] = useState([]);
+  const [garages, setGarages] = useState([]);
 
-  const [user, setUser] = useState({ id: "62e563d14b2c4b9570ad9683" });
-  // console.log(garages);
-  console.log(user);
+  const [user, setUser] = useState({});
 
-  const addToWhips = (whip) => {
-    setWhips([...whips, whip]).then(() => {
-      setGarage();
-    });
-  };
+  // const addToWhips = (whip) => {
+  //   setWhips([...whips, whip]).then(() => {
+  //     // setGarage();
+  //   });
+  // };
 
-  const updateGarageState = (id) => {
-    setWhips(whips.filter((whip) => whip._id !== id)).then(() => {
-      setGarage();
-    });
-  };
+  // const updateGarageState = (id) => {
+  //   setWhips(whips.filter((whip) => whip._id !== id)).then(() => {
+  //     // setGarage();
+  //   });
+  // };
 
   const handleLogout = () => {
     setUser({});
     setGarage({});
   };
-
-  const handleLogin = () => {};
 
   if (!user)
     return (
@@ -56,12 +45,21 @@ function App() {
     <div className="App">
       <NavBar handleLogout={handleLogout} />
       <Routes>
-        <Route path="login" element={<LoginPage setUser={setUser} />} />
+        <Route
+          path="login"
+          element={<LoginPage setUser={setUser} setGarage={setGarage} />}
+        />
         <Route path="signup" element={<SignUpPage />} />
-        <Route path="Garage" element={<GaragePage />} />
+        <Route
+          path="/garage"
+          element={<GaragePage user={user} setGarage={setGarage} />}
+        />
         <Route path="Garage/new-whip" element={<NewWhip />} />
-        <Route path="Garages" element={<GaragesPage />} />
-        <Route path="*" element={<Navigate to="/Garage" replace />} />
+        <Route
+          path="garages"
+          element={<GaragesPage garages={garages} setGarages={setGarages} />}
+        />
+        {/* <Route path="*" element={<Navigate to="/Garage" replace />} /> */}
       </Routes>
     </div>
   );

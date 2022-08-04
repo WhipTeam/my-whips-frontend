@@ -39,11 +39,11 @@ const EditWhipPage = ({ setWhips }) => {
       });
   };
 
-  useEffect(() => {
-    axios.get(`http://localhost:4000/garage/${id}`).then((res) => {
-      setFormData(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`http://localhost:4000/garage/${id}`).then((res) => {
+  //     setFormData(res.data);
+  //   });
+  // }, []);
 
   return (
     <StyledForm onSubmit={handleSubmit}>
