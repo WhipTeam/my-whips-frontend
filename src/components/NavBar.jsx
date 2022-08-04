@@ -8,25 +8,35 @@ const NavBarContainer = styled.div`
   }
 `;
 
-const NavBar = ({ handleLogout }) => {
+const NavBar = ({ handleLogout, user }) => {
   return (
     <div>
       <NavBarContainer>
-        <Link className="nav" to="/login">
-          Login
-        </Link>
-        <Link className="nav" to="/signup">
-          Sign Up
-        </Link>
-        <Link className="nav" to="/mywhips">
-          My Garage
-        </Link>
-        <Link className="nav" to="/garages">
-          Garages
-        </Link>
-        <Link className="nav" onClick={handleLogout} to="/login">
-          LogOut
-        </Link>
+        {!user._id ? (
+          <Link className="nav" to="/login">
+            Login
+          </Link>
+        ) : null}
+        {!user._id ? (
+          <Link className="nav" to="/signup">
+            Sign Up
+          </Link>
+        ) : null}
+        {user._id ? (
+          <Link className="nav" to="/garage">
+            My Garage
+          </Link>
+        ) : null}
+        {user._id ? (
+          <Link className="nav" to="/garages">
+            Garages
+          </Link>
+        ) : null}
+        {user._id ? (
+          <Link className="nav" onClick={handleLogout} to="/login">
+            LogOut
+          </Link>
+        ) : null}
       </NavBarContainer>
     </div>
   );
