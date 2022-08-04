@@ -53,7 +53,9 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route
           path="/garage"
-          element={<GaragePage user={user} setGarage={setGarage} />}
+          element={
+            <GaragePage user={user} setGarage={setGarage} garage={garage} />
+          }
         />
         <Route path="/garage/new-whip" element={<NewWhipPage />} />
         <Route
