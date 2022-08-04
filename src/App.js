@@ -12,11 +12,11 @@ import NewWhipPage from "./pages/NewWhipPage";
 import axios from "axios";
 
 function App() {
+  const [user, setUser] = useState({});
+
   const [garage, setGarage] = useState({});
 
   const [garages, setGarages] = useState([]);
-
-  const [user, setUser] = useState({});
 
   // const addToWhips = (whip) => {
   //   setWhips([...whips, whip]).then(() => {
@@ -57,11 +57,8 @@ function App() {
           path="/garages"
           element={<GaragesPage garages={garages} setGarages={setGarages} />}
         />
-        {user ? (
-          <Route path="*" element={<Navigate to="/garage" replace />} />
-        ) : (
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        )}
+
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </div>
   );
