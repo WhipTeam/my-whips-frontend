@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import Whip from "../components/Whip";
 
 const GaragePage = ({ user, setGarage }) => {
   console.log(user);
@@ -11,7 +12,7 @@ const GaragePage = ({ user, setGarage }) => {
         .then(({ data }) => setGarage(data));
   }, []);
 
-  return <div>GaragePage</div>;
+  return <div>{user ? <h1>{user.name}'s Whips</h1> : <h1>my whips</h1>}</div>;
 };
 
 export default GaragePage;

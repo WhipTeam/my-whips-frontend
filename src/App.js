@@ -59,7 +59,7 @@ function App() {
           path="garages"
           element={<GaragesPage garages={garages} setGarages={setGarages} />}
         />
-        {/* <Route path="*" element={<Navigate to="/Garage" replace />} /> */}
+        <Route path="*" element={<Navigate to="/garage" replace />} />
       </Routes>
     </div>
   );
