@@ -49,13 +49,28 @@ function App() {
         <Route
           path="/garage"
           element={
-            <GaragePage user={user} setGarage={setGarage} garage={garage} />
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <GaragePage user={user} setGarage={setGarage} garage={garage} />
+            )
           }
         />
-        <Route path="/garage/new-whip" element={<NewWhipPage />} />
+        <Route
+          path="/garage/new-whip"
+          element={
+            !user._id ? <Navigate to="/login" replace /> : <NewWhipPage />
+          }
+        />
         <Route
           path="/garages"
-          element={<GaragesPage garages={garages} setGarages={setGarages} />}
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <GaragesPage garages={garages} setGarages={setGarages} />
+            )
+          }
         />
 
         <Route path="*" element={<Navigate to="/login" replace />} />

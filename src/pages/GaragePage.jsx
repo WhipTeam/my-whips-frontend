@@ -11,9 +11,7 @@ const GaragePage = ({ user, setGarage, garage }) => {
       axios
         .get(`http://localhost:4000/garage?owner=${user._id}`)
         .then(({ data }) => setGarage(data));
-  }, []);
-
-  let whips = garage.whips;
+  }, [garage]);
 
   return (
     <div>
@@ -23,15 +21,17 @@ const GaragePage = ({ user, setGarage, garage }) => {
           New Whip
         </Link>
       </button>
-      {/* {whips.map((whip) => {
+      {/* {garage.whips.map((whip) => {
         return (
-          <Whip
-            key={whip._id}
-            img={whip.img}
-            year={whip.year}
-            make={whip.make}
-            model={whip.model}
-          />
+          <div>
+            <Whip
+              key={whip._id}
+              img={whip.img}
+              year={whip.year}
+              make={whip.make}
+              model={whip.model}
+            />
+          </div>
         );
       })} */}
     </div>
