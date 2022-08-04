@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useState, useEffect, useSyncExternalStore } from "react";
 import styled from "styled-components";
 import "./App.css";
@@ -35,12 +35,7 @@ function App() {
     setGarage({});
   };
 
-  if (!user)
-    return (
-      <div>
-        <LoginPage />
-      </div>
-    );
+  const navigate = useNavigate();
 
   return (
     <div className="App">
@@ -62,7 +57,11 @@ function App() {
           path="/garages"
           element={<GaragesPage garages={garages} setGarages={setGarages} />}
         />
-        <Route path="*" element={<Navigate to="/garage" replace />} />
+        {user ? (
+          <Route path="*" element={<Navigate to="/garage" replace />} />
+        ) : (
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        )}
       </Routes>
     </div>
   );

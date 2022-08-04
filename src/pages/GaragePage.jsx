@@ -13,6 +13,8 @@ const GaragePage = ({ user, setGarage, garage }) => {
         .then(({ data }) => setGarage(data));
   }, []);
 
+  let whips = garage.whips;
+
   return (
     <div>
       <h1>{user.name}'s Whips</h1>
@@ -21,7 +23,7 @@ const GaragePage = ({ user, setGarage, garage }) => {
           New Whip
         </Link>
       </button>
-      {garage.whips.map((whip) => {
+      {/* {whips.map((whip) => {
         return (
           <Whip
             key={whip._id}
@@ -31,7 +33,7 @@ const GaragePage = ({ user, setGarage, garage }) => {
             model={whip.model}
           />
         );
-      })}
+      })} */}
     </div>
   );
 };
