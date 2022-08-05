@@ -65,7 +65,9 @@ function App() {
             )
           }
         />
+
         <Route path="/garage/:id" element={<DetailsPage />} />
+
         <Route
           path="/garage/new-whip"
           element={

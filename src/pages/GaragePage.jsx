@@ -34,6 +34,7 @@ const GaragePage = ({ user, setGarage, garage, whips, setWhips }) => {
               year={w.year}
               make={w.make}
               model={w.model}
+              description={w.description}
             />
           </div>
         );

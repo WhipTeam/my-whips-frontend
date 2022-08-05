@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
+import DetailsPage from "../pages/DetailsPage";
 
 const WhipList = styled.ul`
   list-style: none;
