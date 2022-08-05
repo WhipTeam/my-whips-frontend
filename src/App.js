@@ -86,7 +86,12 @@ function App() {
             !user._id ? (
               <Navigate to="/login" replace />
             ) : (
-              <EditWhipPage whip={whip} />
+              <EditWhipPage
+                whip={whip}
+                garage={garage}
+                setWhip={setWhip}
+                whipId={whip._id}
+              />
             )
           }
         />

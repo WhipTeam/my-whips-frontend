@@ -37,7 +37,9 @@ const DetailsPage = ({ whip, garageId }) => {
       </h1>
       <img src={whip.img} alt={`${whip.year} ${whip.make} ${whip.model}`} />
       <p>{whip.description}</p>
-      <button>Edit</button>
+      <Link to={`/garage/${id}/edit`}>
+        <button>Edit</button>
+      </Link>
       <form onSubmit={deleteWhip}>
         <button type="submit">Delete</button>
       </form>

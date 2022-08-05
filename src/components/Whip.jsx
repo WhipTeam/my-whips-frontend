@@ -27,11 +27,11 @@ const Whip = ({ img, year, make, model, id, setWhip, description }) => {
         <Link to={`/garage/${id}`} onClick={handleClick}>
           <img src={img} />
         </Link>
-        <a href={`/garage/${id}`} onClick={handleClick}>
+        <Link to={`/garage/${id}`} onClick={handleClick}>
           <h3>
             {make} {model} - {year}
           </h3>
-        </a>
+        </Link>
         <br />
         <br />
       </WhipList>

@@ -8,35 +8,41 @@ const StyledForm = styled.form`
   flex-direction: column;
 `;
 
-const EditWhipPage = ({ setWhips }) => {
+const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
   let { id } = useParams(); //Used in the handleSubmit function
   let navigate = useNavigate();
 
   const initialState = {
-    make: "",
-    model: "",
-    year: "",
-    img: "",
-    description: "",
+    make: whip.make,
+    model: whip.model,
+    year: whip.year,
+    img: whip.img,
+    description: whip.description,
+    garageId: garage._id,
   };
 
   const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e) => {
-    console.log(e.target);
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    axios
-      .put(`http://localhost:4000/garage/${id}`, formData) //I believe this is the URL we would use but please adjust if necessary
-      .then((res) => {
-        setFormData(initialState);
-        setWhips(res.data);
-        navigate("/", { replace: true }); //Maybe change the redirect here if necessary
-      });
+    axios.put(`http://localhost:4000/garage/${id}/edit`, formData); //I believe this is the URL we would use but please adjust if necessary
+    setWhip({
+      make: formData.make,
+      model: formData.model,
+      year: formData.year,
+      img: formData.img,
+      description: formData.description,
+      _id: whipId,
+    });
+    navigate(`/garage/${id}`, { replace: true }); //Maybe change the redirect here if necessary
+
+    // setFormData(initialState);
+    // setWhips(res.data);
   };
 
   // useEffect(() => {
@@ -53,7 +59,7 @@ const EditWhipPage = ({ setWhips }) => {
           id="make"
           name="make"
           type="text"
-          value={formData?.name}
+          value={formData?.make}
           onChange={handleChange}
         />
       </div>
@@ -63,7 +69,7 @@ const EditWhipPage = ({ setWhips }) => {
           id="model"
           name="model"
           type="text"
-          checked={formData?.model}
+          value={formData?.model}
           onChange={handleChange}
         />
       </div>
@@ -78,12 +84,12 @@ const EditWhipPage = ({ setWhips }) => {
         />
       </div>
       <div>
-        <label htmlFor="image">Image</label>
+        <label htmlFor="img">Image</label>
         <input
-          id="image"
-          name="image"
+          id="img"
+          name="img"
           type="text"
-          value={formData?.image}
+          value={formData?.img}
           onChange={handleChange}
         />
       </div>
