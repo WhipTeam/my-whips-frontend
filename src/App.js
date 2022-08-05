@@ -11,6 +11,7 @@ import NewWhip from "./components/NewWhip";
 import NewWhipPage from "./pages/NewWhipPage";
 import axios from "axios";
 import DetailsPage from "./pages/DetailsPage";
+import EditWhipPage from "./pages/EditWhipPage";
 
 function App() {
   const [user, setUser] = useState({});
@@ -18,6 +19,8 @@ function App() {
   const [garage, setGarage] = useState({});
 
   const [whips, setWhips] = useState([]);
+
+  const [whip, setWhip] = useState({});
 
   const [garages, setGarages] = useState([]);
 
@@ -61,12 +64,32 @@ function App() {
                 garage={garage}
                 setWhips={setWhips}
                 whips={whips}
+                setWhip={setWhip}
               />
             )
           }
         />
 
-        <Route path="/garage/:id" element={<DetailsPage />} />
+        <Route
+          path="/garage/:id"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <DetailsPage whip={whip} />
+            )
+          }
+        />
+        <Route
+          path="garage/:id/edit"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <EditWhipPage whip={whip} />
+            )
+          }
+        />
 
         <Route
           path="/garage/new-whip"

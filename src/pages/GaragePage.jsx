@@ -3,7 +3,7 @@ import axios from "axios";
 import Whip from "../components/Whip";
 import { Link } from "react-router-dom";
 
-const GaragePage = ({ user, setGarage, garage, whips, setWhips }) => {
+const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
   console.log(user);
   useEffect(() => {
     console.log(user);
@@ -35,6 +35,7 @@ const GaragePage = ({ user, setGarage, garage, whips, setWhips }) => {
               make={w.make}
               model={w.model}
               description={w.description}
+              setWhip={setWhip}
             />
           </div>
         );

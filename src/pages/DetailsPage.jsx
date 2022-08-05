@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-const DetailsPage = ({ img, year, make, model, id, description }) => {
+const DetailsPage = ({ whip }) => {
   // const { id } = useParams();
   // const [whip, setWhip] = useState(); //Whip is singular here, following the CoffeeShop example, he uses [coffees] in the App.js and [coffee] here
 
@@ -20,10 +20,10 @@ const DetailsPage = ({ img, year, make, model, id, description }) => {
   return (
     <div>
       <h1>
-        {make} {model} - {year}
+        {whip.make} {whip.model} - {whip.year}
       </h1>
-      <img src={img} alt={`${year} ${make} ${model}`} />
-      <p>{description}</p>
+      <img src={whip.img} alt={`${whip.year} ${whip.make} ${whip.model}`} />
+      <p>{whip.description}</p>
     </div>
   );
 };
