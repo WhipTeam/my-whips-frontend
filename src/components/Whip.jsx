@@ -18,6 +18,7 @@ const Whip = ({ img, year, make, model, id, setWhip, description }) => {
       make: make,
       model: model,
       description: description,
+      _id: id,
     });
   };
   return (
