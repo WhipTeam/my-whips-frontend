@@ -76,7 +76,7 @@ function App() {
             !user._id ? (
               <Navigate to="/login" replace />
             ) : (
-              <DetailsPage whip={whip} />
+              <DetailsPage whip={whip} garageId={garage._id} />
             )
           }
         />
