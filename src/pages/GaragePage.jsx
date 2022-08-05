@@ -3,15 +3,18 @@ import axios from "axios";
 import Whip from "../components/Whip";
 import { Link } from "react-router-dom";
 
-const GaragePage = ({ user, setGarage, garage }) => {
+const GaragePage = ({ user, setGarage, garage, whips, setWhips }) => {
   console.log(user);
   useEffect(() => {
     console.log(user);
     user &&
       axios
         .get(`http://localhost:4000/garage?owner=${user._id}`)
-        .then(({ data }) => setGarage(data));
-  }, [garage]);
+        .then(({ data }) => {
+          setGarage(data);
+          setWhips(data.whips);
+        });
+  }, []);
 
   return (
     <div>
@@ -21,19 +24,19 @@ const GaragePage = ({ user, setGarage, garage }) => {
           New Whip
         </Link>
       </button>
-      {/* {garage.whips.map((whip) => {
+      {whips.map((w) => {
         return (
           <div>
             <Whip
-              key={whip._id}
-              img={whip.img}
-              year={whip.year}
-              make={whip.make}
-              model={whip.model}
+              key={w._id}
+              img={w.img}
+              year={w.year}
+              make={w.make}
+              model={w.model}
             />
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 };

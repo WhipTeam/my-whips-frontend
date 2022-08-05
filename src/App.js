@@ -16,6 +16,8 @@ function App() {
 
   const [garage, setGarage] = useState({});
 
+  const [whips, setWhips] = useState([]);
+
   const [garages, setGarages] = useState([]);
 
   // const addToWhips = (whip) => {
@@ -52,7 +54,13 @@ function App() {
             !user._id ? (
               <Navigate to="/login" replace />
             ) : (
-              <GaragePage user={user} setGarage={setGarage} garage={garage} />
+              <GaragePage
+                user={user}
+                setGarage={setGarage}
+                garage={garage}
+                setWhips={setWhips}
+                whips={whips}
+              />
             )
           }
         />
