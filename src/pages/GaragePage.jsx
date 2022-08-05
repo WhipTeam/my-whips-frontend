@@ -29,6 +29,7 @@ const GaragePage = ({ user, setGarage, garage, whips, setWhips }) => {
           <div>
             <Whip
               key={w._id}
+              id={w._id}
               img={w.img}
               year={w.year}
               make={w.make}
