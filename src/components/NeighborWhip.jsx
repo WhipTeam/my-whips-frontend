@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import DetailsPage from "../pages/DetailsPage";
+import NeighborDetailsPage from "../pages/NeighborDetailsPage";
 
 const WhipList = styled.div`
   a {
@@ -9,10 +9,17 @@ const WhipList = styled.div`
     color: black;
   }
 `;
-
-const Whip = ({ img, year, make, model, id, setWhip, description }) => {
+const NeighborWhip = ({
+  id,
+  make,
+  model,
+  year,
+  img,
+  description,
+  setNeighborWhip,
+}) => {
   const handleClick = () => {
-    setWhip({
+    setNeighborWhip({
       img: img,
       year: year,
       make: make,
@@ -21,13 +28,14 @@ const Whip = ({ img, year, make, model, id, setWhip, description }) => {
       _id: id,
     });
   };
+
   return (
     <div>
       <WhipList>
-        <Link to={`/garage/${id}`} onClick={handleClick}>
+        <Link to={`/neighbor-garage/${id}/details`} onClick={handleClick}>
           <img src={img} />
         </Link>
-        <Link to={`/garage/${id}`} onClick={handleClick}>
+        <Link to={`/neighbor-garage/${id}/details`} onClick={handleClick}>
           <h3>
             {make} {model} - {year}
           </h3>
@@ -39,4 +47,4 @@ const Whip = ({ img, year, make, model, id, setWhip, description }) => {
   );
 };
 
-export default Whip;
+export default NeighborWhip;

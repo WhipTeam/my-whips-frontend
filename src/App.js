@@ -12,6 +12,8 @@ import NewWhipPage from "./pages/NewWhipPage";
 import axios from "axios";
 import DetailsPage from "./pages/DetailsPage";
 import EditWhipPage from "./pages/EditWhipPage";
+import NeighborGaragePage from "./pages/NeighborGaragePage";
+import NeighborDetailsPage from "./pages/NeighborDetailsPage";
 
 function App() {
   const [user, setUser] = useState({});
@@ -23,6 +25,12 @@ function App() {
   const [whip, setWhip] = useState({});
 
   const [garages, setGarages] = useState([]);
+
+  const [neighborGarage, setNeighborGarage] = useState({});
+
+  const [neighborWhips, setNeighborWhips] = useState([]);
+
+  const [neighborWhip, setNeighborWhip] = useState({});
 
   // const addWhip = (whip) => {
   //   setWhips([...whips, whip]).then(() => {
@@ -114,7 +122,38 @@ function App() {
             !user._id ? (
               <Navigate to="/login" replace />
             ) : (
-              <GaragesPage garages={garages} setGarages={setGarages} />
+              <GaragesPage
+                garages={garages}
+                setGarages={setGarages}
+                setNeighborGarage={setNeighborGarage}
+                setNeighborWhips={setNeighborWhips}
+                neighborWhips={neighborWhips}
+                neighborGarage={neighborGarage}
+              />
+            )
+          }
+        />
+        <Route
+          path="/neighbor-garage/:id"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <NeighborGaragePage
+                neighborGarage={neighborGarage}
+                neighborWhips={neighborWhips}
+                setNeighborWhip={setNeighborWhip}
+              />
+            )
+          }
+        />
+        <Route
+          path="/neighbor-garage/:id/details"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <NeighborDetailsPage whip={neighborWhip} />
             )
           }
         />
