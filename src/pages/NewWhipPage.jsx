@@ -35,12 +35,12 @@ const NewWhipPage = ({ addWhip, garage }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
     axios
       .put(`http://localhost:4000/garage/`, formData) //I believe this is the URL we would use but please adjust if necessary
       .then((res) => {
         setFormData(initialState);
-        console.log(res.data);
+
         navigate("/garage", { replace: true }); //Maybe change the redirect here if necessary
       });
   };

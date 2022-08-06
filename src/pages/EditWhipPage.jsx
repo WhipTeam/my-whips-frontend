@@ -29,7 +29,7 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
     axios.put(`http://localhost:4000/garage/${id}/edit`, formData); //I believe this is the URL we would use but please adjust if necessary
     setWhip({
       make: formData.make,

@@ -4,9 +4,7 @@ import Whip from "../components/Whip";
 import { Link } from "react-router-dom";
 
 const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
-  console.log(user);
   useEffect(() => {
-    console.log(user);
     user &&
       axios
         .get(`http://localhost:4000/garage?owner=${user._id}`)

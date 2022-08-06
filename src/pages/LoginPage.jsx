@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = ({ setUser }) => {
+const LoginPage = ({ setUser, user }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -16,9 +16,7 @@ const LoginPage = ({ setUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post(`http://localhost:4000/login`, formData).then((res) => {
-      console.log(res);
       if (res.status === 200) {
-        console.log(res.data);
         setUser(res.data);
         navigate("/garage");
       }

@@ -16,14 +16,12 @@ const SignUpPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
     if (!formData.name || !formData.password) {
       alert("Fields cannot be empty");
     } else if (formData.password !== formData.passwordConfirm) {
       alert("Passwords do not match");
     } else {
       axios.post(`http://localhost:4000/signup`, formData).then((res) => {
-        console.log(res);
         navigate("/login");
       });
     }
