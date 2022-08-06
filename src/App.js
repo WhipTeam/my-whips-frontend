@@ -15,6 +15,9 @@ import EditWhipPage from "./pages/EditWhipPage";
 import NeighborGaragePage from "./pages/NeighborGaragePage";
 import NeighborDetailsPage from "./pages/NeighborDetailsPage";
 
+
+
+
 function App() {
   const [user, setUser] = useState({});
 
@@ -52,6 +55,7 @@ function App() {
   const navigate = useNavigate();
 
   return (
+    
     <div className="App">
       <NavBar handleLogout={handleLogout} user={user} />
       <Routes>
@@ -161,6 +165,7 @@ function App() {
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </div>
+    
   );
 }
 

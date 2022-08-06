@@ -14,7 +14,8 @@ const NavBarContainer = styled.div`
   ul {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
+  justify-content: center;
   list-style-type: none;
 
   li {
@@ -63,13 +64,14 @@ const NavBar = ({ handleLogout, user }) => {
     <div>
       <NavBarContainer>
         <ul>
-        <li>
-          <Link className="nav" to="/">
-          <img class="logo" src="https://i.imgur.com/x2deOJC.png" alt='Wheelie'/>
-          </Link>
-          </li>
-          
-        <li>
+          <li>
+             <Link className="nav" to="/">
+            <img class="logo" src="https://i.imgur.com/x2deOJC.png" alt='Wheelie'/>
+            </Link>
+          </li> 
+          </ul>
+         <ul>  
+          <li>
           {!user._id ? (
           <Link className="nav" to="/login">
             Login
@@ -105,6 +107,7 @@ const NavBar = ({ handleLogout, user }) => {
         ) : null}
         </li>
         </ul>
+        <hr></hr>
       </NavBarContainer>
     </div>
   );

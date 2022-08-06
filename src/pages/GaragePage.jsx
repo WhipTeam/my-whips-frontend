@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components'
 
 const StyledForm = styled.form`
+
   button {
   background-color: #08d;
   border-radius: 20px;
@@ -23,8 +24,10 @@ button:active {
   background-color: #06b;
 };
 span {
-  display: flex;
-  flex-flow: row nowrap;
+
+}
+h1 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 `
 
@@ -49,7 +52,7 @@ const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
           New Whip
         </Link>
       </button>
-      </StyledForm>
+      
       
       {whips.map((w) => {
         return (
@@ -67,6 +70,7 @@ const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
           </span>
         );
       })}
+      </StyledForm>
     </div>
     
   );
