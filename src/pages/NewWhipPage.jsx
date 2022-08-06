@@ -23,7 +23,7 @@ const StyledForm = styled.form`
   font-family: 'Gill Sans';
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 45px;
+  margin-bottom: 20px;
   align-items: top;
   };
 
@@ -55,7 +55,21 @@ button:active {
   outline: 0;
   padding: 4px 20px 0;
   width: 100%;
-  align-content: left;
+ text-align: center;
+};
+.inputfield1 {
+  display: flex;
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 48%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+  text-align: center;
 };
 .label {
   margin-bottom: 50px;
@@ -99,14 +113,14 @@ const NewWhipPage = ({ addWhip, garage }) => {
       <div>
         <div class='title'>New Whip</div>
 
-        <br></br>
+        
         
         <label class='label' htmlFor="make">Make: </label>
         <input
           id="make"
           name="make"
           type="text"
-          // class= "inputfield"
+          class= "inputfield1"
           value={formData?.name}
           onChange={handleChange}
         />
