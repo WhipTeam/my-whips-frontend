@@ -1,24 +1,171 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { useState, useEffect, useSyncExternalStore } from "react";
+import styled from "styled-components";
+import "./App.css";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+import GaragePage from "./pages/GaragePage";
+import GaragesPage from "./pages/GaragesPage";
+import NavBar from "./components/NavBar";
+import NewWhip from "./components/NewWhip";
+import NewWhipPage from "./pages/NewWhipPage";
+import axios from "axios";
+import DetailsPage from "./pages/DetailsPage";
+import EditWhipPage from "./pages/EditWhipPage";
+import NeighborGaragePage from "./pages/NeighborGaragePage";
+import NeighborDetailsPage from "./pages/NeighborDetailsPage";
+
+
+
 
 function App() {
+  const [user, setUser] = useState({});
+
+  const [garage, setGarage] = useState({});
+
+  const [whips, setWhips] = useState([]);
+
+  const [whip, setWhip] = useState({});
+
+  const [garages, setGarages] = useState([]);
+
+  const [neighborGarage, setNeighborGarage] = useState({});
+
+  const [neighborWhips, setNeighborWhips] = useState([]);
+
+  const [neighborWhip, setNeighborWhip] = useState({});
+
+  // const addWhip = (whip) => {
+  //   setWhips([...whips, whip]).then(() => {
+  //     // setGarage();
+  //   });
+  // };
+
+  // const updateGarageState = (id) => {
+  //   setWhips(whips.filter((whip) => whip._id !== id)).then(() => {
+  //     // setGarage();
+  //   });
+  // };
+
+  const handleLogout = () => {
+    setUser({});
+    setGarage({});
+  };
+
+  const navigate = useNavigate();
+
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar handleLogout={handleLogout} user={user} />
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <LoginPage setUser={setUser} setGarage={setGarage} user={user} />
+          }
+        />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route
+          path="/garage"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <GaragePage
+                user={user}
+                setGarage={setGarage}
+                garage={garage}
+                setWhips={setWhips}
+                whips={whips}
+                setWhip={setWhip}
+              />
+            )
+          }
+        />
+
+        <Route
+          path="/garage/:id"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <DetailsPage whip={whip} garageId={garage._id} />
+            )
+          }
+        />
+        <Route
+          path="garage/:id/edit"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <EditWhipPage
+                whip={whip}
+                garage={garage}
+                setWhip={setWhip}
+                whipId={whip._id}
+              />
+            )
+          }
+        />
+
+        <Route
+          path="/garage/new-whip"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <NewWhipPage garage={garage} />
+            )
+          }
+        />
+        <Route
+          path="/garages"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <GaragesPage
+                garages={garages}
+                setGarages={setGarages}
+                setNeighborGarage={setNeighborGarage}
+                setNeighborWhips={setNeighborWhips}
+                neighborWhips={neighborWhips}
+                neighborGarage={neighborGarage}
+              />
+            )
+          }
+        />
+        <Route
+          path="/neighbor-garage/:id"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <NeighborGaragePage
+                neighborGarage={neighborGarage}
+                neighborWhips={neighborWhips}
+                setNeighborWhip={setNeighborWhip}
+              />
+            )
+          }
+        />
+        <Route
+          path="/neighbor-garage/:id/details"
+          element={
+            !user._id ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <NeighborDetailsPage whip={neighborWhip} />
+            )
+          }
+        />
+
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
     </div>
+    
   );
 }
 
