@@ -2,6 +2,32 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import Whip from "../components/Whip";
 import { Link } from "react-router-dom";
+import styled from 'styled-components'
+
+const StyledForm = styled.form`
+  button {
+  background-color: #08d;
+  border-radius: 20px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: center;
+  width: 4vm;
+};
+button:active {
+  background-color: #06b;
+};
+span {
+  display: flex;
+  flex-flow: row nowrap;
+}
+`
+
 
 const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
   useEffect(() => {
@@ -15,16 +41,19 @@ const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
   }, []);
 
   return (
-    <div>
+    <div class="container">
       <h1>{user.name}'s Whips</h1>
+      <StyledForm>
       <button>
         <Link to="/garage/new-whip" garage={garage}>
           New Whip
         </Link>
       </button>
+      </StyledForm>
+      
       {whips.map((w) => {
         return (
-          <div>
+          <span>
             <Whip
               key={w._id}
               id={w._id}
@@ -35,10 +64,11 @@ const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
               description={w.description}
               setWhip={setWhip}
             />
-          </div>
+          </span>
         );
       })}
     </div>
+    
   );
 };
 
