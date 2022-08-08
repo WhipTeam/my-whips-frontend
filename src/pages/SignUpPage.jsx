@@ -73,7 +73,7 @@ const SignUpPage = () => {
     } else if (formData.password !== formData.passwordConfirm) {
       alert("Passwords do not match");
     } else {
-      axios.post(`/signup`, formData).then((res) => {
+      axios.POST(`/signup`, formData).then((res) => {
         navigate("/login");
       });
     }
