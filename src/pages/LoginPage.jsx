@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const StyledForm = styled.form`
   display: flex;
@@ -16,47 +16,45 @@ const StyledForm = styled.form`
   height: 300px;
   padding: 20px;
   width: 320px;
-  .title{
-  color: solid black;
-  font-family: 'Gill Sans';
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  align-items: top;
-  };
+  .title {
+    color: solid black;
+    font-family: "Gill Sans";
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    align-items: top;
+  }
   button {
-  background-color: #08d;
-  border-radius: 20px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  cursor: pointer;
-  font-size: 18px;
-  height: 150px;
-  margin-top: 38px;
-  text-align: center;
-  width: 100%;
-};
-button:active {
-  background-color: #06b;
-};
-input {
-  background-color: #303245;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  font-size: 18px;
-  height: 100%;
-  outline: 0;
-  padding: 4px 20px 0;
-  width: 100%;
-};
-label {
-
-}
-
-`
+    background-color: #08d;
+    border-radius: 20px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 150px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+  }
+  button:active {
+    background-color: #06b;
+  }
+  input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+  }
+  label {
+  }
+`;
 
 const LoginPage = ({ setUser, user }) => {
   const navigate = useNavigate();
@@ -71,19 +69,21 @@ const LoginPage = ({ setUser, user }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:4000/login`, formData).then((res) => {
-      if (res.status === 200) {
-        setUser(res.data);
-        navigate("/garage");
-      }
-    });
+    axios
+      .post(`${process.env.REACT_APP_DB_URL}/login`, formData)
+      .then((res) => {
+        if (res.status === 200) {
+          setUser(res.data);
+          navigate("/garage");
+        }
+      });
   };
 
   return (
     <div>
       <h1>Login</h1>
       <StyledForm onSubmit={handleSubmit}>
-        <div class="title">Sign in to view your Garage!</div>
+        <div className="title">Sign in to view your Garage!</div>
         <label htmlFor="name">Username:</label>
         <input type="text" name="username" id="name" onChange={handleChange} />
         <br />
@@ -94,7 +94,7 @@ const LoginPage = ({ setUser, user }) => {
           id="password"
           onChange={handleChange}
         />
-        
+
         <button type="submit">submit</button>
       </StyledForm>
     </div>

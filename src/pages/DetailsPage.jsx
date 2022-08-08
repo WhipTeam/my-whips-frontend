@@ -13,9 +13,11 @@ const DetailsPage = ({ whip, garageId }) => {
 
   const deleteWhip = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:4000/garage/${id}`, formData).then(() => {
-      navigate("/garage", { replace: true });
-    });
+    axios
+      .put(`${process.env.REACT_APP_DB_URL}/garage/${id}`, formData)
+      .then(() => {
+        navigate("/garage", { replace: true });
+      });
   };
   return (
     <div>

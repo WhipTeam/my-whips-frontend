@@ -17,58 +17,58 @@ const StyledForm = styled.form`
   padding: 20px;
   width: 320px;
   margin-top: 30px;
-  
-  .title{
-  color: solid black;
-  font-family: 'Gill Sans';
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  align-items: top;
-  };
+
+  .title {
+    color: solid black;
+    font-family: "Gill Sans";
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    align-items: top;
+  }
   .button {
-  background-color: #08d;
-  border-radius: 20px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  cursor: pointer;
-  font-size: 18px;
-  height: 150px;
-  margin-top: 38px;
-  text-align: center;
-  width: 100%;
-};
-.button:active {
-  background-color: #06b;
-};
-.inputfield {
-  background-color: #303245;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  font-size: 18px;
-  height: 100%;
-  outline: 0;
-  padding: 4px 20px 0;
-  width: 100%;
-  text-align: center
-};
-.inputfield1 {
-  display: flex;
-  background-color: #303245;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  font-size: 18px;
-  height: 50%;
-  outline: 0;
-  padding: 4px 40px 0;
-  width: 100%;
-  text-align: center;
-};
+    background-color: #08d;
+    border-radius: 20px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 150px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+  }
+  .button:active {
+    background-color: #06b;
+  }
+  .inputfield {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .inputfield1 {
+    display: flex;
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 50%;
+    outline: 0;
+    padding: 4px 40px 0;
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
@@ -93,7 +93,7 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.put(`http://localhost:4000/garage/${id}/edit`, formData); //I believe this is the URL we would use but please adjust if necessary
+    axios.put(`${process.env.REACT_APP_DB_URL}/garage/${id}/edit`, formData); //I believe this is the URL we would use but please adjust if necessary
     setWhip({
       make: formData.make,
       model: formData.model,
@@ -117,13 +117,13 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <div>
-        <div class="title">Edit Whip</div>
+        <div className="title">Edit Whip</div>
         <label htmlFor="make">Make</label>
         <input
           id="make"
           name="make"
           type="text"
-          class="inputfield1"
+          className="inputfield1"
           value={formData?.make}
           onChange={handleChange}
         />
@@ -137,7 +137,7 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
           id="model"
           name="model"
           type="text"
-          class="inputfield"
+          className="inputfield"
           value={formData?.model}
           onChange={handleChange}
         />
@@ -151,7 +151,7 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
           id="year"
           name="year"
           type="text"
-          class="inputfield"
+          className="inputfield"
           value={formData?.year}
           onChange={handleChange}
         />
@@ -165,7 +165,7 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
           id="img"
           name="img"
           type="text"
-          class="inputfield"
+          className="inputfield"
           value={formData?.img}
           onChange={handleChange}
         />
@@ -179,13 +179,13 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
           id="description"
           name="description"
           type="text"
-          class="inputfield"
+          className="inputfield"
           value={formData?.description}
           onChange={handleChange}
         />
       </div>
 
-      <input class="button" type="submit" value="Edit Whip" />
+      <input className="button" type="submit" value="Edit Whip" />
     </StyledForm>
   );
 };

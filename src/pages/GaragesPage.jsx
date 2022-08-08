@@ -17,7 +17,7 @@ const GaragesPage = ({
 }) => {
   useEffect(() => {
     axios
-      .get("http://localhost:4000/garages")
+      .get(`${process.env.REACT_APP_DB_URL}/garages`)
       .then(({ data }) => setGarages(data));
   }, []);
 

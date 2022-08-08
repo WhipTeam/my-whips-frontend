@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const StyledForm = styled.form`
   display: flex;
@@ -16,43 +16,43 @@ const StyledForm = styled.form`
   height: 300px;
   padding: 20px;
   width: 320px;
-  .title{
-  color: solid black;
-  font-family: 'Gill Sans';
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  align-items: top;
-  };
+  .title {
+    color: solid black;
+    font-family: "Gill Sans";
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    align-items: top;
+  }
   button {
-  background-color: #08d;
-  border-radius: 20px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  cursor: pointer;
-  font-size: 18px;
-  height: 150px;
-  margin-top: 38px;
-  text-align: center;
-  width: 100%;
-};
-button:active {
-  background-color: #06b;
-};
-input {
-  background-color: #303245;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  font-size: 18px;
-  height: 100%;
-  outline: 0;
-  padding: 4px 20px 0;
-  width: 100%;
-};
-`
+    background-color: #08d;
+    border-radius: 20px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 150px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+  }
+  button:active {
+    background-color: #06b;
+  }
+  input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+  }
+`;
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -73,9 +73,11 @@ const SignUpPage = () => {
     } else if (formData.password !== formData.passwordConfirm) {
       alert("Passwords do not match");
     } else {
-      axios.post(`http://localhost:4000/signup`, formData).then((res) => {
-        navigate("/login");
-      });
+      axios
+        .post(`${process.env.REACT_APP_DB_URL}/signup`, formData)
+        .then((res) => {
+          navigate("/login");
+        });
     }
   };
 
