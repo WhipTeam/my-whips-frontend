@@ -73,11 +73,9 @@ const SignUpPage = () => {
     } else if (formData.password !== formData.passwordConfirm) {
       alert("Passwords do not match");
     } else {
-      axios
-        .post(`${process.env.REACT_APP_DB_URL}/signup`, formData)
-        .then((res) => {
-          navigate("/login");
-        });
+      axios.post(`/signup`, formData).then((res) => {
+        navigate("/login");
+      });
     }
   };
 
