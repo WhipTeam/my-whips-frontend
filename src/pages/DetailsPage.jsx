@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { PROD_URL } from "../api";
 
 const DetailsPage = ({ whip, garageId }) => {
   const { id } = useParams();
@@ -14,9 +13,11 @@ const DetailsPage = ({ whip, garageId }) => {
 
   const deleteWhip = (e) => {
     e.preventDefault();
-    axios.put(`${PROD_URL}/garage/${id}`, formData).then(() => {
-      navigate("/garage", { replace: true });
-    });
+    axios
+      .put(`https://my-whips-backend.herokuapp.com/garage/${id}`, formData)
+      .then(() => {
+        navigate("/garage", { replace: true });
+      });
   };
   return (
     <div>

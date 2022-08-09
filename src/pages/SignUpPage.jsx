@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { PROD_URL } from "../api/index";
 
 // try importing env and greating uri var...
 
@@ -76,9 +75,11 @@ const SignUpPage = () => {
     } else if (formData.password !== formData.passwordConfirm) {
       alert("Passwords do not match");
     } else {
-      axios.post(`${PROD_URL}/signup`, formData).then((res) => {
-        navigate("/login");
-      });
+      axios
+        .post(`https://my-whips-backend.herokuapp.com/signup`, formData)
+        .then((res) => {
+          navigate("/login");
+        });
     }
   };
 

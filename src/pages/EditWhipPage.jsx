@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-import PROD_URL from "../api/index";
 
 const StyledForm = styled.form`
   display: flex;
@@ -94,7 +93,10 @@ const EditWhipPage = ({ whip, garage, setWhip, whipId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.put(`${PROD_URL}/garage/${id}/edit`, formData); //I believe this is the URL we would use but please adjust if necessary
+    axios.put(
+      `https://my-whips-backend.herokuapp.com/garage/${id}/edit`,
+      formData
+    ); //I believe this is the URL we would use but please adjust if necessary
     setWhip({
       make: formData.make,
       model: formData.model,

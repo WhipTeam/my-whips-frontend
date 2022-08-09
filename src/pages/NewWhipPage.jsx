@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { PROD_URL } from "../api";
 
 const StyledForm = styled.form`
   display: flex;
@@ -101,7 +100,7 @@ const NewWhipPage = ({ addWhip, garage }) => {
     e.preventDefault();
 
     axios
-      .put(`${PROD_URL}/garage/`, formData) //I believe this is the URL we would use but please adjust if necessary
+      .put(`https://my-whips-backend.herokuapp.com/garage/`, formData) //I believe this is the URL we would use but please adjust if necessary
       .then((res) => {
         setFormData(initialState);
 
