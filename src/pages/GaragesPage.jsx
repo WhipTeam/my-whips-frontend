@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import Garage from "../components/Garage";
 import styled from "styled-components";
-import { PROD_URL } from "../../api";
+import { PROD_URL } from "../api";
 
 const StyleDiv = styled.div`
   margin-top: 30px;

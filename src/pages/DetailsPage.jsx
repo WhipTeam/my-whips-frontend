@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { PROD_URL } from "../../api";
+import { PROD_URL } from "../api";
 
 const DetailsPage = ({ whip, garageId }) => {
   const { id } = useParams();

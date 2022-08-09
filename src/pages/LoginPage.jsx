@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { PROD_URL } from "../../api";
+import { PROD_URL } from "../api";
 
 const StyledForm = styled.form`
   display: flex;

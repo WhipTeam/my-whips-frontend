@@ -3,7 +3,7 @@ import axios from "axios";
 import Whip from "../components/Whip";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { PROD_URL } from "../../api";
+import { PROD_URL } from "../api";
 
 const StyledForm = styled.form`
   button {
