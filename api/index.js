@@ -1,3 +1,3 @@
-const PROD_URL = "https://my-whips-backend.herokuapp.com/";
+const PROD_URL = "https://my-whips-backend.herokuapp.com";
 
-export { PROD_URL };
+export default { PROD_URL };
