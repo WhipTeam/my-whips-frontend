@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { PROD_URL } from "../../api";
 
 const StyledForm = styled.form`
   display: flex;
@@ -69,14 +70,12 @@ const LoginPage = ({ setUser, user }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`${process.env.REACT_APP_DB_URL}/login`, formData)
-      .then((res) => {
-        if (res.status === 200) {
-          setUser(res.data);
-          navigate("/garage");
-        }
-      });
+    axios.post(`${PROD_URL}/login`, formData).then((res) => {
+      if (res.status === 200) {
+        setUser(res.data);
+        navigate("/garage");
+      }
+    });
   };
 
   return (

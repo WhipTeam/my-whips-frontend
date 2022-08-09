@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { PROD_URL } from "../../api";
+
+// try importing env and greating uri var...
 
 const StyledForm = styled.form`
   display: flex;
@@ -73,7 +76,7 @@ const SignUpPage = () => {
     } else if (formData.password !== formData.passwordConfirm) {
       alert("Passwords do not match");
     } else {
-      axios.post(`/signup`, formData).then((res) => {
+      axios.post(`${PROD_URL}/signup`, formData).then((res) => {
         navigate("/login");
       });
     }

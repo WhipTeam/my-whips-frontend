@@ -3,6 +3,7 @@ import axios from "axios";
 import Whip from "../components/Whip";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { PROD_URL } from "../../api";
 
 const StyledForm = styled.form`
   button {
@@ -33,12 +34,10 @@ const StyledForm = styled.form`
 const GaragePage = ({ user, setGarage, garage, whips, setWhips, setWhip }) => {
   useEffect(() => {
     user &&
-      axios
-        .get(`${process.env.REACT_APP_DB_URL}/garage?owner=${user._id}`)
-        .then(({ data }) => {
-          setGarage(data);
-          setWhips(data.whips);
-        });
+      axios.get(`${PROD_URL}/garage?owner=${user._id}`).then(({ data }) => {
+        setGarage(data);
+        setWhips(data.whips);
+      });
   }, []);
 
   return (
